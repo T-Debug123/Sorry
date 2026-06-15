@@ -1,0 +1,257 @@
+/* --- RETRO HALFTONE & COMIC STYLING --- */
+body {
+    margin: 0;
+    padding: 15px;
+    font-family: "Comic Sans MS", "Chalkboard SE", sans-serif;
+    background-color: #f4e3c5;
+    background-image: 
+        radial-gradient(#d3a86c 15%, transparent 16%), 
+        radial-gradient(#d3a86c 15%, transparent 16%);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100dvh; /* dvh fixes the iOS Safari bottom bar issue */
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%; /* Prevents iOS text scaling */
+}
+
+/* Comic Book Container */
+.comic-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 900px;
+    width: 100%;
+    background: #fff;
+    padding: 10px;
+    border: 6px solid #111;
+    box-shadow: 8px 8px 0px #111;
+}
+
+/* Individual Panels */
+.panel {
+    position: relative;
+    border: 4px solid #111;
+    background-color: #eee;
+    min-height: 350px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Images */
+.panel img.character-layer {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90%;
+    max-height: 75%;
+    object-fit: contain;
+    z-index: 1;
+    opacity: 0.8; 
+}
+
+/* --- SPEECH & THOUGHT BUBBLES --- */
+.bubble {
+    position: relative;
+    background: #fff;
+    border: 3px solid #111;
+    border-radius: 20px;
+    padding: 12px 15px;
+    margin: 15px;
+    z-index: 2;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    font-weight: bold;
+    box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+
+/* Thought Bubble Tail (Panel 1) */
+.thought:after, .thought:before {
+    content: '';
+    position: absolute;
+    background: #fff;
+    border: 3px solid #111;
+    border-radius: 50%;
+    bottom: -20px;
+    left: 30px;
+    width: 15px;
+    height: 15px;
+}
+.thought:before {
+    bottom: -40px;
+    left: 20px;
+    width: 8px;
+    height: 8px;
+}
+
+/* --- PANIC SHOUT BUBBLE (Panel 2) --- */
+.shout {
+    border-radius: 2px;
+    animation: panic-shake 0.3s infinite;
+}
+.shout:after {
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    right: 40px;
+    border-width: 25px 25px 0 0;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+.shout:before {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: 37px;
+    border-width: 30px 29px 0 0;
+    border-style: solid;
+    border-color: #111 transparent transparent transparent;
+    z-index: -1;
+}
+@keyframes panic-shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    25% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+    50% { transform: translate(1px, 0px) rotate(0.5deg); }
+    75% { transform: translate(-1px, 1px) rotate(0deg); }
+    100% { transform: translate(1px, -1px) rotate(-0.5deg); }
+}
+
+/* --- LEFT-POINTING SPEECH BUBBLE (Panel 3) --- */
+.speech-left {
+    font-size: 0.95rem; 
+    padding: 10px 15px; 
+    width: 80%;         
+    margin-left: auto;  
+    margin-right: 15px;
+}
+.speech-left:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 20px;
+    border-width: 15px 0 0 15px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+.speech-left:before {
+    content: '';
+    position: absolute;
+    bottom: -19px;
+    left: 17px; 
+    border-width: 19px 0 0 19px;
+    border-style: solid;
+    border-color: #111 transparent transparent transparent;
+    z-index: -1;
+}
+
+/* --- RIGHT-POINTING SPEECH BUBBLE (Panel 4) --- */
+.speech:after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: 40px; 
+    border-width: 20px 20px 0 0;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+.speech:before {
+    content: '';
+    position: absolute;
+    bottom: -24px;
+    right: 37px;
+    border-width: 24px 24px 0 0;
+    border-style: solid;
+    border-color: #111 transparent transparent transparent;
+    z-index: -1;
+}
+
+/* --- BUTTONS --- */
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    z-index: 5;
+    min-height: 60px; /* Gives the NO button room to jump */
+}
+
+.comic-btn {
+    font-family: inherit;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 25px;
+    border: 3px solid #111;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #111;
+    transition: transform 0.1s;
+    -webkit-tap-highlight-color: transparent; /* Removes iOS blue flash */
+    user-select: none; /* Prevents text highlighting on rapid taps */
+}
+
+.comic-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px #111;
+}
+
+#btn-yes { background-color: #8ce973; z-index: 10; position: relative; }
+#btn-no { background-color: #ff6b6b; z-index: 10; position: relative; }
+
+/* --- CELEBRATION SCREEN --- */
+#celebration {
+    display: none;
+    text-align: center;
+    background: #fff;
+    padding: 30px;
+    border: 8px solid #111;
+    box-shadow: 10px 10px 0px #111;
+    max-width: 90%;
+    position: relative;
+}
+
+#celebration h1 {
+    font-size: 2.5rem;
+    color: #ff3b3b;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #111;
+    margin-top: 0;
+}
+
+#celebration p { font-size: 1.2rem; }
+
+.starburst {
+    background: repeating-conic-gradient(
+        from 0deg,
+        #ffe74c 0deg 15deg,
+        #ff5964 15deg 30deg
+    );
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    opacity: 0.8;
+    display: none;
+}
+
+/* --- MOBILE SPECIFIC FIXES (iPhone) --- */
+@media (max-width: 768px) {
+    .comic-container { 
+        grid-template-columns: 1fr; /* Stacks panels vertically */
+        padding: 5px;
+        border-width: 4px;
+        box-shadow: 6px 6px 0px #111;
+    }
+    
+    .panel {
+        min-height: 280px; /* Slightly shorter panels for mobile */
+    }
+
+    .bubble {
+        font-size: 1rem; /* Slightly smaller text */
+        margin: 10px;
+    }
+    
+    #celebration h1 { font-size: 2rem; }
+}
