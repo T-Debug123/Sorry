@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>I'm Sorry!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="starburst" id="starburst-bg"></div>
+
+    <div class="comic-container" id="comic">
+        
+        <div class="panel" style="background-color: #a8d5e2;">
+            <div class="bubble thought">
+                Oh no... I did something terribly dumb. Like, "deleting the production database" levels of dumb.
+            </div>
+            <img src="img/1.png" class="character-layer" alt="Thinking Character">
+        </div>
+
+        <div class="panel" style="background-color: #ff9b9b;">
+            <div class="bubble shout">
+                PANIC MODE: ENGAGED!!<br>ABORT! ABORT!
+            </div>
+            <img src="img/2.png" class="character-layer" alt="Panicking Character">
+        </div>
+
+        <div class="panel" style="background-color: #f3e582;">
+            <div class="bubble speech-left">
+                *Lightbulb Moment!* <br>
+                "Wait... I'm a developer. Let me build a little corner of the internet dedicated entirely to winning you back."
+            </div>
+            <img src="img/3.png" class="character-layer" alt="Character with Idea">
+        </div>
+
+        <div class="panel" id="panel-4" style="background-color: #b5e48c;">
+            <div class="bubble speech">
+                So... running apology.exe. <br>
+                Will you forgive me?
+            </div>
+            
+            <img src="img/4.png" class="character-layer" alt="Character Asking">
+
+            <div class="button-container">
+                <button class="comic-btn" id="btn-yes">YES</button>
+                <button class="comic-btn" id="btn-no">NO</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="celebration">
+        <h1>FORGIVENESS GRANTED!</h1>
+        <p>Whew! Thanks for the forgiveness. Love successfully rebooted!</p>
+        <p>I Love You Tanvi ❤️</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
